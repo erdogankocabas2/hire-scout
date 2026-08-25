@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hire Scout</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="rail">
+      <div class="brand">
+        <span class="brand-mark">HS</span>
+        <div>
+          <div class="brand-name">Hire Scout</div>
+          <div class="brand-sub" id="geoLabel">Turkey · GTM / Product / BD</div>
+        </div>
+      </div>
+      <nav class="nav">
+        <button class="nav-btn active" data-view="pipeline">Pipeline</button>
+        <button class="nav-btn" data-view="companies">Companies</button>
+        <button class="nav-btn" data-view="people">People</button>
+        <button class="nav-btn" data-view="scout">Scout</button>
+      </nav>
+      <div class="rail-foot" id="keysStatus"></div>
+    </aside>
+
+    <main class="main">
+      <header class="top">
+        <div>
+          <h1 id="viewTitle">Pipeline</h1>
+          <p class="muted" id="viewSubtitle">Track outreach toward getting hired.</p>
+        </div>
+        <div class="top-actions">
+          <button id="runScoutBtn" class="btn primary">Run scout now</button>
+        </div>
+      </header>
+
+      <section id="view-pipeline" class="view active">
+        <div class="filters">
+          <select id="pipelineStatusFilter">
+            <option value="">All statuses</option>
+          </select>
+        </div>
+        <div id="pipelineBoard" class="board"></div>
+      </section>
+
+      <section id="view-companies" class="view">
+        <div class="filters">
+          <input id="companySearch" type="search" placeholder="Search companies…" />
+        </div>
+        <div id="companiesList" class="list"></div>
+      </section>
+
+      <section id="view-people" class="view">
+        <div class="filters">
+          <select id="peopleCategoryFilter">
+            <option value="">All categories</option>
+            <option value="cofounder">Cofounder</option>
+            <option value="hr">HR / Talent</option>
+            <option value="gtm">GTM</option>
+            <option value="product">Product</option>
+            <option value="bd">BD</option>
+          </select>
+        </div>
+        <div id="peopleList" class="list"></div>
+      </section>
+
+      <section id="view-scout" class="view">
+        <div class="card-block">
+          <h2>Schedule</h2>
+          <p class="muted" id="scheduleInfo">Nightly scout configured from env.</p>
+          <div class="row gap">
+            <label>Geo <input id="scoutGeo" value="Turkey" /></label>
+            <label>Max companies <input id="scoutMax" type="number" value="15" min="1" max="40" /></label>
+          </div>
+        </div>
+        <div class="card-block">
+          <h2>Recent runs</h2>
+          <div id="runsList" class="list compact"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="companyDialog">
+    <form method="dialog" class="dialog-inner">
+      <header>
+        <h2 id="dialogTitle">Company</h2>
+        <button value="cancel" class="btn ghost">Close</button>
+      </header>
+      <div id="dialogBody"></div>
+    </form>
+  </dialog>
+
+  <div id="toast" class="toast hidden"></div>
+  <script src="/static/app.js"></script>
+</body>
+</html>
